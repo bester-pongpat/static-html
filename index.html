@@ -16,40 +16,104 @@
 
         body {
             font-family: 'Prompt', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
-            background-color: #ffffff;
+            background: linear-gradient(135deg, #f8faf9 0%, #e9f5ef 100%);
             color: #1A1A1A;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             -webkit-font-smoothing: antialiased;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: absolute;
+            top: -180px;
+            right: -120px;
+            width: 420px;
+            height: 420px;
+            background: radial-gradient(circle, rgba(13, 177, 75, 0.12) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: "";
+            position: absolute;
+            bottom: -160px;
+            left: -100px;
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, rgba(255, 80, 0, 0.10) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
         }
 
         .coming-soon {
             text-align: center;
+            position: relative;
+            z-index: 1;
+            max-width: 720px;
+            padding: 2rem;
+            animation: fadeIn 0.9s ease-out;
+        }
+
+        .coming-soon__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: rgba(13, 177, 75, 0.10);
+            color: #0DB14B;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(13, 177, 75, 0.18);
         }
 
         .coming-soon__message {
-            font-size: clamp(2rem, 5vw, 4rem);
+            font-size: clamp(2.2rem, 5.5vw, 3.8rem);
             font-weight: 700;
-            color: #0DB14B;
-            letter-spacing: 0.02em;
-            line-height: 1.3;
+            color: #0A3D23;
+            letter-spacing: 0.01em;
+            line-height: 1.25;
+            margin-bottom: 0.75rem;
+        }
+
+        .coming-soon__subtitle {
+            font-size: clamp(1rem, 1.6vw, 1.15rem);
+            color: #3b3f42;
+            line-height: 1.7;
+            margin: 0 auto 1.75rem;
+            max-width: 560px;
         }
 
         .coming-soon__accent {
             display: block;
-            width: 60px;
+            width: 56px;
             height: 4px;
-            background-color: #FF5000;
-            margin: 1.5rem auto 0;
-            border-radius: 2px;
+            background-color: #0DB14B;
+            margin: 0.5rem auto 0;
+            border-radius: 9999px;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(12px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
     <main class="coming-soon">
-        <h1 class="coming-soon__message">coming soon...</h1>
+        <div class="coming-soon__badge">Coming Soon</div>
+        <h1 class="coming-soon__message">COMING SOON! 🎉</h1>
+        <p class="coming-soon__subtitle">We're excited to announce that the etomo Web Portal will be launching soon!</p>
+        <p class="coming-soon__subtitle">Stay tuned for updates and get ready for a more convenient and seamless way to access our services online.</p>
         <span class="coming-soon__accent"></span>
     </main>
 </body>
